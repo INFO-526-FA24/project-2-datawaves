@@ -1,6 +1,6 @@
 ---
 title: "Project Proposal"
-author: "Datawaves"
+author: "Datawaves"- Libin N George, Ajeet Singh, Saharsh Bhave, Navyasree Madhu
 format: pdf
 editor: visual
 ---
