@@ -52,6 +52,7 @@ We will create a line graph and associated Autocorrelation graph for the above m
 
 # Weekly Plan of Attack
 
+```{=html}
 <style>
   table {
     table-layout: auto;
@@ -64,7 +65,7 @@ We will create a line graph and associated Autocorrelation graph for the above m
   th:nth-child(5), td:nth-child(5) { width: 10%; }
   th:nth-child(6), td:nth-child(6) { width: 35%; }
 </style>
-
+```
 | Task Name                                             | Status    | Assignee                         | Due Date | Priority | Summary                                                                                                                                   |
 |------------|------------|------------|------------|------------|------------|
 | Research and Background Setup                         | Completed | Libin, Saharsh, Ajeet, Navyasree | Nov 6    | High     | Research AR model theory, and types of processes, and decide on parameter settings for AR(1), AR(2), AR(3) models                         |
@@ -93,8 +94,6 @@ We will create a line graph and associated Autocorrelation graph for the above m
 
 -   **docs/**: Project report, analysis write-ups, and weekly task updates. README outlines project goals, methods, and findings.
 
--   **project_proposal.qmd:** Project proposal file in qmd format.
-
--   **project_proposal.pdf**: Project proposal auto generated from project_proposal.qmd
+-   **proposal.qmd:** Project proposal file in qmd format.
 
 Each folder will contain a README.md file explaining its contents and purpose in the project workflow.
