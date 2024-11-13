@@ -52,6 +52,19 @@ We will create a line graph and associated Autocorrelation graph for the above m
 
 # Weekly Plan of Attack
 
+<style>
+  table {
+    table-layout: auto;
+    width: 100%;
+  }
+  th:nth-child(1), td:nth-child(1) { width: 20%; }
+  th:nth-child(2), td:nth-child(2) { width: 10%; }
+  th:nth-child(3), td:nth-child(3) { width: 15%; }
+  th:nth-child(4), td:nth-child(4) { width: 10%; }
+  th:nth-child(5), td:nth-child(5) { width: 10%; }
+  th:nth-child(6), td:nth-child(6) { width: 35%; }
+</style>
+
 | Task Name                                             | Status    | Assignee                         | Due Date | Priority | Summary                                                                                                                                   |
 |------------|------------|------------|------------|------------|------------|
 | Research and Background Setup                         | Completed | Libin, Saharsh, Ajeet, Navyasree | Nov 6    | High     | Research AR model theory, and types of processes, and decide on parameter settings for AR(1), AR(2), AR(3) models                         |
