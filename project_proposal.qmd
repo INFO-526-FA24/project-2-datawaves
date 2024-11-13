@@ -18,6 +18,18 @@ We will use a generated dataset to simulate various AR model scenarios. This app
 # Data Generation
 To understand the behavior of AR (AutoRegressive) models under different configurations, we can simulate time series data using the arima.sim() function in R. This function is well-suited for generating synthetic data that follows ARIMA processes, allowing us to study how different AR and MA configurations affect the patterns in a time series. Specifically, we will use it to generate data for AR models with varying parameters.
 
+# Data Analysis Plan 
+We will consider the following variations in AutoRegressive models, We will generate data for these models and create visualizations from the data. 
+AR(1) - Random Walk
+AR(1) - Having moderate positive correlation, decaying toward the mean over time.
+AR(1) - Data will oscillate, alternating signs and showing a negative correlation
+AR(2) - Data with oscillatory behavior 
+AR(2) - Data without oscillatory behavior 
+AR(3) - Data with Complex behavior 
+We will create a line graph and associated Autocorrelation graph for the above models to visualize the statistical information and how the data behaves. 
+We will also create a shiny app that enables the user to change parameters and plot the line graph. 
+
+
 ### **Final Repository Organization**
 
 -   **data/**: Contains generated datasets and relevant metadata. It includes README, which details dataset parameters and generation processes.
