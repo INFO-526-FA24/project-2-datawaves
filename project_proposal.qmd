@@ -5,15 +5,18 @@ format: pdf
 editor: visual
 ---
 
-Objective
+# Objective
 
 Presenting and visualizing technical topic in statistics, focusing on autoregressive (AR) models, to demonstrate how parameters affect patterns in time series data.
 
-Introduction
+## Introduction
 
 This project aims to explore and visually demonstrate how autoregressive (AR) models operate, specifically how different parameters and AR orders impact the structure and behavior of a time series. AR models are essential tools in time series analysis, with broad applications across economics, finance, weather forecasting, and more. Understanding the visual and statistical characteristics of AR(1), AR(2), and AR(3) models, as well as how different parameter values influence the model’s output, provides insight into data pattern recognition and prediction capabilities.
 
 We will use a generated dataset to simulate various AR model scenarios. This approach allows us to precisely control parameters and observe how each setting impacts the time series and how to enable precise, tailored demonstrations of AR model behavior. Our visualizations will feature multiple plots for AR(1), AR(2), and AR(3) models, showcasing stationary and non-stationary processes, cyclical patterns, and convergence to the mean. We will also develop an interactive Shiny app that allows users to work on different AR model parameters and visualize the resulting time series. This approach helps to understand through direct engagement.
+
+# Data Generation
+To understand the behavior of AR (AutoRegressive) models under different configurations, we can simulate time series data using the arima.sim() function in R. This function is well-suited for generating synthetic data that follows ARIMA processes, allowing us to study how different AR and MA configurations affect the patterns in a time series. Specifically, we will use it to generate data for AR models with varying parameters.
 
 ### **Final Repository Organization**
 
