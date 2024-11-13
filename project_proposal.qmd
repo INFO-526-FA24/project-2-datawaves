@@ -25,3 +25,19 @@ You can add options to executable code like this
 ```
 
 The `echo: false` option disables the printing of code (only output is displayed).
+
+### **Final Repository Organization**
+
+-   **data/**: Contains generated datasets and relevant metadata. It includes README, which details dataset parameters and generation processes.
+
+-   **plots/**: Includes static ggplot2 visualizations for AR models (AR(1), AR(2), and AR(3)) with various parameter combinations. README explains each plot and parameter choices.
+
+-   **shiny_app/**: Holds the Shiny app files for interactive plotting of AR models. README provides instructions for using the app and explains the interactive features.
+
+-   **docs/**: Project report, analysis write-ups, and weekly task updates. README outlines project goals, methods, and findings.
+
+-   **project_proposal.qmd:** Project proposal file in qmd format.
+
+-   **project_proposal.pdf**: Project proposal auto generated from project_proposal.qmd
+
+Each folder will contain a README.md file explaining its contents and purpose in the project workflow.
