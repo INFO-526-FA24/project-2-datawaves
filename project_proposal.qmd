@@ -50,6 +50,26 @@ We will consider the following variations in AutoRegressive models, We will gene
 
 We will create a line graph and associated Autocorrelation graph for the above models to visualize the statistical information and how the data behaves. We will also create a shiny app that enables the user to change parameters and plot the line graph.
 
+# Weekly Plan of Attack
+
+| Task Name                                             | Status    | Assignee                         | Due Date | Priority | Summary                                                                                                                                   |
+|------------|------------|------------|------------|------------|------------|
+| Research and Background Setup                         | Completed | Libin, Saharsh, Ajeet, Navyasree | Nov 6    | High     | Research AR model theory, and types of processes, and decide on parameter settings for AR(1), AR(2), AR(3) models                         |
+| Create proposal                                       | Completed | Libin, Saharsh, Ajeet, Navyasree | Nov 13   | High     | Create a proposal for an AR model with a detailed attack plan.                                                                            |
+| Update the Proposal after peer review                 | TODO      | Libin, Saharsh, Ajeet, Navyasree | Nov 18   | High     | Update the Proposal after incorporating the feedback and suggestions from Peer review and submission for instructor review.               |
+| Static Visualization in ggplot2 AR(1) - Random Walk   | TODO      | Saharsh                          | Nov 25   | High     | Generate time series data with $\phi_1 =1$ for AR(1) model and Create static plots in ggplot2 for AR model for Random Walk.               |
+| Static Visualization in ggplot2 AR(1) - Positive      | TODO      | Ajeet                            | Nov 25   | High     | Generate time series data with $\phi_1 > 0$ for AR(1) model and Create static plots in ggplot2 for AR model for Positive Correlation.     |
+| Static Visualization in ggplot2 AR(1) - Negative      | TODO      | Navyasree                        | Nov 25   | High     | Generate time series data with $\phi_1 < 0$ for AR(1) model and Create static plots in ggplot2 for AR model for Negative Correlation.     |
+| Static Visualization in ggplot2 AR(2) - Positive      | TODO      | Libin                            | Nov 25   | High     | Generate time series data with $\phi_2 > 0$ for AR(2) model and Create static plots in ggplot2 for AR model without Oscillatory Behavior. |
+| Static Visualization in ggplot2 AR(2) - Negative      | TODO      | Navyasree, Ajeet                 | Nov 25   | High     | Generate time series data with $\phi_2 < 0$ for AR(2) model and Create static plots in ggplot2 for AR model with Oscillatory Behavior.    |
+| Static Visualization in ggplot2 AR(3) - Complex Model | TODO      | Saharsh, Libin                   | Nov 25   | High     | Generate time series data for AR(3) model and Create static plots in ggplot2 for AR model with Complex Behavior.                          |
+| Shiny Interactive Plot Development                    | TODO      | Libin, Saharsh, Ajeet, Navyasree | Dec 2    | High     | Develop Shiny app to allow users to adjust AR model parameters and visualize results in real-time, including dynamic plot updates.        |
+| Creating templates for Posters                        | TODO      | Libin, Saharsh, Ajeet, Navyasree | Dec 2    | High     | Create templates for posters for peer review and feedback in class.                                                                       |
+| Final Analysis and Report                             | TODO      | Libin, Saharsh, Ajeet, Navyasree | Dec 9    | High     | Summarize findings, discuss insights, and compile visualizations and interpretations for the final report.                                |
+| Repository Organization and Documentation             | TODO      | Libin, Saharsh, Ajeet, Navyasree | Dec 9    | Moderate | Ensure clear structure and complete documentation, including README files for each folder, usage guidelines for plots, and Shiny app      |
+| Project Write-Up                                      | TODO      | Libin, Saharsh, Ajeet, Navyasree | Dec 9    | High     | Create the project write-up.                                                                                                              |
+| Project Presentation                                  | TODO      | Libin, Saharsh, Ajeet, Navyasree | Dec 9    | High     | Create Project Presentation.                                                                                                              |
+
 ### **Final Repository Organization**
 
 -   **data/**: Contains generated datasets and relevant metadata. It includes README, which details dataset parameters and generation processes.
