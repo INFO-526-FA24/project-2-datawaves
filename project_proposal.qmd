@@ -1,6 +1,6 @@
 ---
 title: "Project Proposal"
-author: "Datawaves"- Libin N George, Ajeet Singh, Saharsh Bhave, Navyasree Madhu
+author: "Datawaves - Libin N George, Ajeet Singh, Saharsh Bhave, Navyasree Madhu"
 format: pdf
 editor: visual
 ---
@@ -15,20 +15,40 @@ This project aims to explore and visually demonstrate how autoregressive (AR) mo
 
 We will use a generated dataset to simulate various AR model scenarios. This approach allows us to precisely control parameters and observe how each setting impacts the time series and how to enable precise, tailored demonstrations of AR model behavior. Our visualizations will feature multiple plots for AR(1), AR(2), and AR(3) models, showcasing stationary and non-stationary processes, cyclical patterns, and convergence to the mean. We will also develop an interactive Shiny app that allows users to work on different AR model parameters and visualize the resulting time series. This approach helps to understand through direct engagement.
 
+# Generic AR Model Equation
+
+The general formula for an auto regressive model of order p , or AR(p), is:
+
+$$
+X_t = \phi_1 X_{t-1} + \phi_2 X_{t-2} + \dots + \phi_p X_{t-p} + \epsilon_t
+$$
+
+where:
+
+-   $X_t$ is the value of the time series at time $t$,
+-   $\phi_1, \phi_2, \dots, \phi_p$ are the auto regressive coefficients,
+-   $p$ is the order of the AR model, and
+-   $\epsilon_t$ is a white noise error term at time $t$, with mean zero and constant variance.
+
 # Data Generation
+
 To understand the behavior of AR (AutoRegressive) models under different configurations, we can simulate time series data using the arima.sim() function in R. This function is well-suited for generating synthetic data that follows ARIMA processes, allowing us to study how different AR and MA configurations affect the patterns in a time series. Specifically, we will use it to generate data for AR models with varying parameters.
 
-# Data Analysis Plan 
-We will consider the following variations in AutoRegressive models, We will generate data for these models and create visualizations from the data. 
-AR(1) - Random Walk
-AR(1) - Having moderate positive correlation, decaying toward the mean over time.
-AR(1) - Data will oscillate, alternating signs and showing a negative correlation
-AR(2) - Data with oscillatory behavior 
-AR(2) - Data without oscillatory behavior 
-AR(3) - Data with Complex behavior 
-We will create a line graph and associated Autocorrelation graph for the above models to visualize the statistical information and how the data behaves. 
-We will also create a shiny app that enables the user to change parameters and plot the line graph. 
+# Data Analysis Plan
 
+We will consider the following variations in AutoRegressive models, We will generate data for these models and create visualizations from the data.
+
+1.  AR(1) - Random Walk AR(1) - Having moderate positive correlation, decaying toward the mean over time.
+
+2.  AR(1) - Data will oscillate, alternating signs and showing a negative correlation
+
+3.  AR(2) - Data with oscillatory behavior
+
+4.  AR(2) - Data without oscillatory behavior
+
+5.  AR(3) - Data with Complex behavior
+
+We will create a line graph and associated Autocorrelation graph for the above models to visualize the statistical information and how the data behaves. We will also create a shiny app that enables the user to change parameters and plot the line graph.
 
 ### **Final Repository Organization**
 
