@@ -60,36 +60,88 @@ We will make a tree structure showing how the different visualizations we have e
 
 # Weekly Plan of Attack
 
-<style>
-  table {
-    table-layout: auto;
-    width: 100%;
-  }
-  th:nth-child(1), td:nth-child(1) { width: 20%; }
-  th:nth-child(2), td:nth-child(2) { width: 10%; }
-  th:nth-child(3), td:nth-child(3) { width: 15%; }
-  th:nth-child(4), td:nth-child(4) { width: 10%; }
-  th:nth-child(5), td:nth-child(5) { width: 10%; }
-  th:nth-child(6), td:nth-child(6) { width: 35%; }
-</style>
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
+#| label: weekly-plan-attack
+#| echo: false
+if (!requireNamespace("pacman", quietly = TRUE)) {
+    install.packages("pacman")  # Install pacman if not already installed
+}
+library(pacman)
+pacman::p_load(knitr, stringr, kableExtra)
 
-| Task Name                                             | Status    | Assignee                         | Due Date | Priority | Summary                                                                                                                                   |
-|-------------------------------------------------------|-----------|----------------------------------|----------|----------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| Research and Background Setup                         | Completed | Libin, Saharsh, Ajeet, Navyasree | Nov 6    | High     | Research AR model theory, and types of processes, and decide on parameter settings for AR(1), AR(2), AR(3) models                         |
-| Create proposal                                       | Completed | Libin, Saharsh, Ajeet, Navyasree | Nov 13   | High     | Create a proposal for an AR model with a detailed attack plan.                                                                            |
-| Update the Proposal after peer review                 | TODO      | Libin, Saharsh, Ajeet, Navyasree | Nov 18   | High     | Update the Proposal after incorporating the feedback and suggestions from Peer review and submission for instructor review.               |
-| Static Visualization in ggplot2 AR(1) - Random Walk   | TODO      | Saharsh                          | Nov 25   | High     | Generate time series data with $\phi_1 =1$ for AR(1) model and Create static plots in ggplot2 for AR model for Random Walk.               |
-| Static Visualization in ggplot2 AR(1) - Positive      | TODO      | Ajeet                            | Nov 25   | High     | Generate time series data with $\phi_1 > 0$ for AR(1) model and Create static plots in ggplot2 for AR model for Positive Correlation.     |
-| Static Visualization in ggplot2 AR(1) - Negative      | TODO      | Navyasree                        | Nov 25   | High     | Generate time series data with $\phi_1 < 0$ for AR(1) model and Create static plots in ggplot2 for AR model for Negative Correlation.     |
-| Static Visualization in ggplot2 AR(2) - Positive      | TODO      | Libin                            | Nov 25   | High     | Generate time series data with $\phi_2 > 0$ for AR(2) model and Create static plots in ggplot2 for AR model without Oscillatory Behavior. |
-| Static Visualization in ggplot2 AR(2) - Negative      | TODO      | Navyasree, Ajeet                 | Nov 25   | High     | Generate time series data with $\phi_2 < 0$ for AR(2) model and Create static plots in ggplot2 for AR model with Oscillatory Behavior.    |
-| Static Visualization in ggplot2 AR(3) - Complex Model | TODO      | Saharsh, Libin                   | Nov 25   | High     | Generate time series data for AR(3) model and Create static plots in ggplot2 for AR model with Complex Behavior.                          |
-| Shiny Interactive Plot Development                    | TODO      | Libin, Saharsh, Ajeet, Navyasree | Dec 2    | High     | Develop Shiny app to allow users to adjust AR model parameters and visualize results in real-time, including dynamic plot updates.        |
-| Creating templates for Posters                        | TODO      | Libin, Saharsh, Ajeet, Navyasree | Dec 2    | High     | Create templates for posters for peer review and feedback in class.                                                                       |
-| Final Analysis and Report                             | TODO      | Libin, Saharsh, Ajeet, Navyasree | Dec 9    | High     | Summarize findings, discuss insights, and compile visualizations and interpretations for the final report.                                |
-| Repository Organization and Documentation             | TODO      | Libin, Saharsh, Ajeet, Navyasree | Dec 9    | Moderate | Ensure clear structure and complete documentation, including README files for each folder, usage guidelines for plots, and Shiny app      |
-| Project Write-Up                                      | TODO      | Libin, Saharsh, Ajeet, Navyasree | Dec 9    | High     | Create the project write-up.                                                                                                              |
-| Project Presentation/Poster for iShowcase                                 | TODO      | Libin, Saharsh, Ajeet, Navyasree | Dec 9    | High     | Create Project Presentation.                                                                                                              |
+
+# Data for the table
+data <- data.frame(
+  TaskName = c(
+    "Research and Background Setup",
+    "Create proposal",
+    "Update the Proposal after peer review",
+    "Static Visualization in ggplot2 AR(1) - Random Walk",
+    "Static Visualization in ggplot2 AR(1) - Positive",
+    "Static Visualization in ggplot2 AR(1) - Negative",
+    "Static Visualization in ggplot2 AR(2) - Positive",
+    "Static Visualization in ggplot2 AR(2) - Negative",
+    "Static Visualization in ggplot2 AR(3) - Complex Model",
+    "Shiny Interactive Plot Development",
+    "Creating templates for Posters",
+    "Final Analysis and Report",
+    "Repository Organization and Documentation",
+    "Project Write-Up",
+    "Project Presentation/Poster for iShowcase"
+  ),
+  Status = c(
+    "Completed", "Completed", "TODO", "TODO", "TODO", "TODO", "TODO", "TODO", "TODO",
+    "TODO", "TODO", "TODO", "TODO", "TODO", "TODO"
+  ),
+  Assignee = c(
+    "Libin, Saharsh, Ajeet, Navyasree", "Libin, Saharsh, Ajeet, Navyasree",
+    "Libin, Saharsh, Ajeet, Navyasree", "Saharsh", "Ajeet", "Navyasree",
+    "Libin", "Navyasree, Ajeet", "Saharsh, Libin",
+    "Libin, Saharsh, Ajeet, Navyasree", "Libin, Saharsh, Ajeet, Navyasree",
+    "Libin, Saharsh, Ajeet, Navyasree", "Libin, Saharsh, Ajeet, Navyasree",
+    "Libin, Saharsh, Ajeet, Navyasree", "Libin, Saharsh, Ajeet, Navyasree"
+  ),
+  "Due Date" = c(
+    "Nov 6", "Nov 13", "Nov 18", "Nov 25", "Nov 25", "Nov 25", "Nov 25", "Nov 25",
+    "Nov 25", "Dec 2", "Dec 2", "Dec 9", "Dec 9", "Dec 9", "Dec 9"
+  ),
+  Priority = c(
+    "High", "High", "High", "High", "High", "High", "High", "High", "High", "High",
+    "High", "High", "High", "High", "High"
+  ),
+  Summary = c(
+    "Research AR model theory, and types of processes, and decide on parameter settings for AR(1), AR(2), AR(3) models",
+    "Create a proposal for an AR model with a detailed attack plan.",
+    "Update the Proposal after incorporating the feedback and suggestions from Peer review and submission for instructor review.",
+    "Generate time series data with $\\phi_1 =1$ for AR(1) model and Create static plots in ggplot2 for AR model for Random Walk.",
+    "Generate time series data with $\\phi_1 > 0$ for AR(1) model and Create static plots in ggplot2 for AR model for Positive Correlation.",
+    "Generate time series data with $\\phi_1 < 0$ for AR(1) model and Create static plots in ggplot2 for AR model for Negative Correlation.",
+    "Generate time series data with $\\phi_2 > 0$ for AR(2) model and Create static plots in ggplot2 for AR model without Oscillatory Behavior.",
+    "Generate time series data with $\\phi_2 < 0$ for AR(2) model and Create static plots in ggplot2 for AR model with Oscillatory Behavior.",
+    "Generate time series data for AR(3) model and Create static plots in ggplot2 for AR model with Complex Behavior.",
+    "Develop Shiny app to allow users to adjust AR model parameters and visualize results in real-time, including dynamic plot updates.",
+    "Create templates for posters for peer review and feedback in class.",
+    "Summarize findings, discuss insights, and compile visualizations and interpretations for the final report.",
+    "Ensure clear structure and complete documentation, including README files for each folder, usage guidelines for plots, and Shiny app.",
+    "Create the project write-up.",
+    "Create Project Presentation."
+  )
+)
+data$TaskName <- str_wrap(data$TaskName, width = 30)
+data$Assignee <- str_wrap(data$Assignee, width = 12)
+data$Summary <- str_wrap(data$Summary, width = 50)
+
+# Generate the table
+kable(data, format = "latex", booktabs = TRUE, escape = FALSE, longtable = TRUE) %>%
+  kable_styling(latex_options = c("hold_position")) %>%
+  column_spec(1, width = "4.5em") %>%
+  column_spec(2, width = "4em") %>%
+  column_spec(3, width = "4.5em") %>%
+  column_spec(4, width = "4em") %>%
+  column_spec(5, width = "3.5em") %>%
+  column_spec(6, width = "14em") %>%
+  row_spec(0, bold = TRUE)
+```
 
 ### **Final Repository Organization**
 
