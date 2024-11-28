@@ -54,6 +54,10 @@ We will consider the following variations in AutoRegressive models, We will gene
 
 We will create a line graph and associated Autocorrelation graph for the above models to visualize the statistical information and how the data behaves. We will also create a shiny app that enables the user to change parameters and plot the line graph.
 
+# Plan for Poster
+
+We will make a tree structure showing how the different visualizations we have explain the different features of AR model. We will include a small real world example to show how the AR model can be used to predict the future. 
+
 # Weekly Plan of Attack
 
 | Task Name                                             | Status    | Assignee                         | Due Date | Priority | Summary                                                                                                                                   |
@@ -72,7 +76,7 @@ We will create a line graph and associated Autocorrelation graph for the above m
 | Final Analysis and Report                             | TODO      | Libin, Saharsh, Ajeet, Navyasree | Dec 9    | High     | Summarize findings, discuss insights, and compile visualizations and interpretations for the final report.                                |
 | Repository Organization and Documentation             | TODO      | Libin, Saharsh, Ajeet, Navyasree | Dec 9    | Moderate | Ensure clear structure and complete documentation, including README files for each folder, usage guidelines for plots, and Shiny app      |
 | Project Write-Up                                      | TODO      | Libin, Saharsh, Ajeet, Navyasree | Dec 9    | High     | Create the project write-up.                                                                                                              |
-| Project Presentation                                  | TODO      | Libin, Saharsh, Ajeet, Navyasree | Dec 9    | High     | Create Project Presentation.                                                                                                              |
+| Project Presentation/Poster for iShowcase                                 | TODO      | Libin, Saharsh, Ajeet, Navyasree | Dec 9    | High     | Create Project Presentation.                                                                                                              |
 
 ### **Final Repository Organization**
 
