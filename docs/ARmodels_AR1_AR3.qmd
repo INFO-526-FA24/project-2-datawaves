@@ -33,7 +33,7 @@ plot_ar1_process <- function(ar_coeffs, title_expression) {
 set.seed(123) 
 pos_ar1_process <- function
 (ar_coeffs = 0.3, 
- title_expression = expression("AR(1) with positive coefficient: X[t] = 0.3 * X[t-1] + e[t]")) {   
+ title_expression = expression("AR(1) with positive coefficient: Y[t] = 0.3 * Y[t-1] + e[t]")) {   
   
   # Simulate AR(1) process   
   ar_process <- as.numeric(arima.sim(model = list(ar = ar_coeffs), n = 200))
@@ -53,7 +53,7 @@ pos_ar1_process()
 
 Low Coefficient ($ϕ=0.3$)
 
-The value of $ϕ=0.3$ is relatively low, which means the influence of Xt−1 is moderate. The series will exhibit limited persistence; therefore, the deviations from the mean will fade quickly as the lagged influence diminishes over time.
+The value of $ϕ=0.3$ is relatively low, which means the influence of $X_{t−1}$ is moderate. The series will exhibit limited persistence; therefore, the deviations from the mean will fade quickly as the lagged influence diminishes over time.
 
 Stationarity
 
@@ -61,11 +61,11 @@ The process is stationary because $ϕ<1$. This implies that the time series will
 
 White Noise Contribution
 
-Random white noise ($ϵt$) plays a more significant role in shaping the series than lagged values. This results in a more stochastic (less deterministic) series.
+Random white noise ($\epsilon_t$) plays a more significant role in shaping the series than lagged values. This results in a more stochastic (less deterministic) series.
 
 Smoothness and Short-Term Correlation
 
-The small $ϕ$ value results in limited smoothness; Xt is only weakly correlated with Xt−1. Short-term trends are minimal, and the series appears more random.
+The small $\phi$ value results in limited smoothness; $Y_t$ is only weakly correlated with $Y_{t−1}$. Short-term trends are minimal, and the series appears more random.
 
 Mean-Reverting Property
 
@@ -156,15 +156,15 @@ plot_ar3_process()
 
 The AR(3) model has a combination of both positive and negative coefficients.
 
-$ϕ1=0.6$: The current value Xt has a positive dependence on the previous value Xt−1, meaning that if Xt−1 is large, Xt will likely also be large.
+$\phi_1=0.6$: The current value $Y_t$ has a positive dependence on the previous value $Y_{t−1}$, meaning that if $Y_{t−1} is large, $Y_t$ will likely also be large.
 
-$ϕ2=0.3$: The current value Xt has a moderate positive dependence on Xt−2 but is weaker than Xt−1.
+$\phi_2=0.3$: The current value $X_t$ has a moderate positive dependence on $X_{t−2}$ but is weaker than $X_{t−1}$.
 
 $ϕ3=−0.2$: The current value Xt has a negative dependence on Xt−3, meaning that if Xt−3 is large, Xt will likely be smaller.
 
 Oscillatory Behavior
 
-The process exhibits oscillations when it has positive and negative coefficients. Positive coefficients contribute to values moving in the same direction, while negative coefficients introduce reversals. This can lead to a complex, oscillatory pattern, where the influence of earlier terms (both positive and negative) generates alternating cycles. The size of the coefficients determines the amplitude of these oscillations. Large positive coefficients (like $ϕ1=0.6$) cause the series to follow the previous term closely, while the negative coefficient $ϕ3=−0.2$ creates some counteracting force.
+The process exhibits oscillations when it has positive and negative coefficients. Positive coefficients contribute to values moving in the same direction, while negative coefficients introduce reversals. This can lead to a complex, oscillatory pattern, where the influence of earlier terms (both positive and negative) generates alternating cycles. The size of the coefficients determines the amplitude of these oscillations. Large positive coefficients (like $\phi_1=0.6$) cause the series to follow the previous term closely, while the negative coefficient $\phi_3=−0.2$ creates some counteracting force.
 
 Stationarity
 
@@ -176,4 +176,4 @@ The white noise term $ϵt$ adds randomness to the model, making the series unpre
 
 Persistence of Shocks
 
-Because of the combination of positive and negative coefficients, shocks (deviations from the mean) may persist longer than in models with only one or two coefficients, as multiple lags influence the series. However, the persistence of shocks is still limited by the relatively small size of the negative coefficient ($ϕ3=−0.2$).
+Because of the combination of positive and negative coefficients, shocks (deviations from the mean) may persist longer than in models with only one or two coefficients, as multiple lags influence the series. However, the persistence of shocks is still limited by the relatively small size of the negative coefficient ($\phi_3=−0.2$).
