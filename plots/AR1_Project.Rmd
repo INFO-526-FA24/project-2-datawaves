@@ -1,0 +1,284 @@
+---
+title: "AR1 negative coefficient"
+author: "Navyasree Madhu"
+date: "2024-11-29"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+# AR(1) with positive coefficients
+```{r}
+library(ggplot2)
+
+set.seed(123)
+# Function to plot AR(1) process
+plot_ar1_process <- function(ar_coeffs, title_expression) {
+  # Generate AR(1) process
+  ar_process <- as.numeric(arima.sim(model = list(ar = ar_coeffs), n = 200))
+  
+  # Create data frame for plotting
+  plot_data <- data.frame(Time = 1:200, AR_Oscillatory = ar_process)
+  
+  ggplot(plot_data, aes(x = Time, y = AR_Oscillatory)) + 
+    geom_line(color = "purple") + 
+    geom_point(color = "blue", size = 3, shape = 20) + 
+    labs(
+      title = title_expression,
+      x = "Time", 
+      y = "Value"
+    ) +
+    theme_minimal()
+}
+```
+
+
+
+# Example-1 AR(1) with positive coefficients
+```{r}
+set.seed(123)
+pos_ar1_process <- function(ar_coeffs = 0.3,
+                             title_expression = expression("AR(1) with positive coefficient: X[t] = 0.3 * X[t-1] + e[t]")) {
+  # Simulate AR(1) process
+  ar_process <- as.numeric(arima.sim(model = list(ar = ar_coeffs), n = 200))
+  
+  # Create a data frame for plotting
+  plot_data <- data.frame(Time = 1:200, AR_Oscillatory = ar_process)
+  
+  # Generate the plot using ggplot2
+  ggplot(plot_data, aes(x = Time, y = AR_Oscillatory)) + 
+    geom_line(color = "purple") + 
+    geom_point(color = "blue", size = 1.5, shape = 20) + 
+    labs(
+      title = title_expression,
+      x = "Time", 
+      y = "Value"
+    ) +
+    theme_minimal()
+}
+
+pos_ar1_process()
+
+```
+
+
+
+#The Behavior of the Model
+
+Low Coefficient ($ϕ=0.3$)
+
+The value of $ϕ=0.3$ is relatively low, which means the influence of Xt−1 is moderate.
+The series will exhibit limited persistence; therefore, the deviations from the mean will fade quickly as the lagged influence diminishes over time.
+
+Stationarity
+
+The process is stationary because $ϕ<1$. This implies that the time series will fluctuate around a constant mean (0 for this example). The variance of the series remains finite and does not grow over time.
+
+White Noise Contribution
+
+Random white noise ($ϵt$) plays a more significant role in shaping the series than lagged values. This results in a more stochastic (less deterministic) series.
+
+Smoothness and Short-Term Correlation
+
+The small $ϕ$ value results in limited smoothness; Xt is only weakly correlated with Xt−1. Short-term trends are minimal, and the series appears more random.
+
+Mean-Reverting Property
+
+The series will revert to the mean quickly after a deviation because the influence of the lagged term diminishes rapidly.
+
+
+
+# AR(1) with negative coefficients
+```{r}
+
+set.seed(123)
+
+neg_ar1_process <- function(ar_coeffs = -0.3,
+                             title_expression = expression("AR(1) with negative coefficient: X[t] = -0.3 * X[t-1] + e[t]")) {
+  # Simulate AR(1) process
+  ar_process <- as.numeric(arima.sim(model = list(ar = ar_coeffs), n = 200))
+  
+  # Create a data frame for plotting
+  plot_data <- data.frame(Time = 1:200, AR_Oscillatory = ar_process)
+  
+  # Generate the plot using ggplot2
+  ggplot(plot_data, aes(x = Time, y = AR_Oscillatory)) + 
+    geom_line(color = "purple") + 
+    geom_point(color = "blue", size = 1.5, shape = 20) + 
+    labs(
+      title = title_expression,
+      x = "Time", 
+      y = "Value"
+    ) +
+    theme_minimal()
+}
+
+neg_ar1_process()
+
+```
+
+
+
+#The Behavior of the Model
+Low Negative Coefficient ($ϕ=−0.3$)
+
+A small negative coefficient indicates:
+A weak negative correlation between Xt and Xt−1. Xt tends to move in the opposite direction to Xt−1 but with low persistence.
+
+Oscillatory Behavior
+The negative coefficient introduces an alternating pattern: If Xt−1 is positive, Xt is more likely to be negative, and vice versa. However, the oscillations are not pronounced due to the small magnitude of $ϕ$.
+
+Stationarity
+The process is stationary because $ϕ <1$. This ensures the series fluctuates around a constant mean (0 for this example). The variance remains stable over time, preventing explosive growth or decay.
+
+Randomness and White Noise
+Random white noise ($ϵt$) dominates the series: The weak $ϕ$ value means that the current value is heavily influenced by random noise rather than the lagged term.
+
+Limited Persistence
+The impact of deviations from the mean dissipates quickly because $ϕ$ is small. The series lacks strong trends or long-term dependencies.
+
+
+
+#Ar2 negative coefficient
+```{r}
+set.seed(123)
+
+# Function to plot AR(2) process with negative coefficients
+neg_ar2_process <- function(ar_coeffs = c(-0.1, -0.3), 
+                             title_expression = expression("AR(2) with negative coefficients: X[t] = -0.5 * X[t-1] - 0.3 * X[t-2] + e[t]")) {
+  # Generate AR(2) process
+  ar_process <- as.numeric(arima.sim(model = list(ar = ar_coeffs), n = 200))
+  
+  # Create data frame for plotting
+  plot_data <- data.frame(Time = 1:200, AR_Oscillatory = ar_process)
+  
+  # Generate the plot
+  ggplot(plot_data, aes(x = Time, y = AR_Oscillatory)) + 
+    geom_line(color = "purple") + 
+    geom_point(color = "blue", size = 1.5, shape = 20) + 
+    labs(
+      title = title_expression,
+      x = "Time", 
+      y = "Value"
+    ) +
+    theme_minimal()
+}
+
+# Call the function to plot the AR(2) process
+neg_ar2_process()
+```
+
+
+
+#The Behavior of the Model
+
+Negative Coefficients ($ϕ1=−0.1$, $ϕ2=−0.3$)
+
+The negative coefficients imply that both Xt−1 and Xt−2 exert negative influences on Xt. Xt moves in the opposite direction of both Xt−1 and Xt−2. The degree of negative correlation is higher with Xt−2 ($ϕ2=−0.3$) than Xt−1 ($ϕ1=−0.1$).
+
+Oscillatory Behavior
+
+The presence of negative coefficients, especially for both lags, results in oscillations. If Xt−1 and Xt−2 have positive values, the current value Xt will be negative and vice versa. Due to the small size of the coefficients, the oscillations are relatively weak and less pronounced, but still observable.
+
+Stationarity
+
+The process remains stationary as long as the roots of the equation (based on the AR coefficients) lie outside the unit circle. In this case, the AR(2) model with $ϕ1=−0.1$ and $ϕ2=−0.3$ will be stationary since the magnitude of the coefficients is less than 1.
+
+White Noise Contribution
+
+The noise term $ϵt$ is the reason for random variation in the series. This contribute to the stochastic nature of the process. Even with the negative autoregressive terms, random noise still largely influences the process.
+
+Decay of Influence
+
+Given that the coefficients are relatively small, the impact of past values on the current value decays over time, leading to weak persistence. This means that shocks or deviations from the mean will not last long, and the series will quickly revert back to the mean.
+
+
+# AR(3) model with complex cycle
+
+```{r}
+set.seed(123)
+# Function to plot AR(1) process
+plot_ar3_process <- function(ar_coeffs, title_expression) {
+  # Generate AR(1) process
+  ar_process <- as.numeric(arima.sim(model = list(ar = ar_coeffs), n = 200))
+  
+  # Create data frame for plotting
+  plot_data <- data.frame(Time = 1:200, AR_Oscillatory = ar_process)
+  
+  ggplot(plot_data, aes(x = Time, y = AR_Oscillatory)) + 
+    geom_line(color = "purple") + 
+    geom_point(color = "blue", size = 3, shape = 20) + 
+    labs(
+      title = title_expression,
+      x = "Time", 
+      y = "Value"
+    ) +
+    theme_minimal()
+}
+
+```
+
+
+
+```{r}
+set.seed(123)
+
+# Function to plot AR(3) process
+plot_ar3_process <- function(ar_coeffs = c(0.6, 0.3, -0.2), 
+                             title_expression = expression("AR(3): X[t] = 0.6 * X[t-1] + 0.3 * X[t-2] - 0.2 * X[t-3] + e[t]")) {
+  # Generate AR(3) process
+  ar_process <- as.numeric(arima.sim(model = list(ar = ar_coeffs), n = 200))
+  
+  # Create data frame for plotting
+  plot_data <- data.frame(Time = 1:200, AR_Oscillatory = ar_process)
+  
+  # Generate the plot
+  ggplot(plot_data, aes(x = Time, y = AR_Oscillatory)) + 
+    geom_line(color = "purple") + 
+    geom_point(color = "blue", size = 1.5, shape = 20) + 
+    labs(
+      title = title_expression,
+      x = "Time", 
+      y = "Value"
+    ) +
+    theme_minimal()
+}
+
+# Call the function to plot the AR(3) process
+plot_ar3_process()
+```
+
+
+
+#The Behavior of the Model
+Positive and Negative Coefficients
+
+The AR(3) model has a combination of both positive and negative coefficients.
+
+$ϕ1=0.6$: The current value Xt has a positive dependence on the previous value Xt−1, meaning that if Xt−1 is large, Xt will likely also be large.
+
+$ϕ2=0.3$: The current value Xt has a moderate positive dependence on Xt−2 but is weaker than Xt−1.
+
+$ϕ3=−0.2$: The current value Xt has a negative dependence on Xt−3, meaning that if Xt−3 is large, Xt will likely be smaller.
+
+Oscillatory Behavior
+
+The process exhibits oscillations when it has positive and negative coefficients. Positive coefficients contribute to values moving in the same direction, while negative coefficients introduce reversals. This can lead to a complex, oscillatory pattern, where the influence of earlier terms (both positive and negative) generates alternating cycles. The size of the coefficients determines the amplitude of these oscillations. Large positive coefficients (like $ϕ1=0.6$) cause the series to follow the previous term closely, while the negative coefficient $ϕ3=−0.2$ creates some counteracting force.
+
+
+Stationarity
+
+As long as the roots of the characteristic equation (derived from the AR coefficients) are outside the unit circle, the process is stationary. Given that the coefficients here are moderate in size, this process is stationary, meaning that the mean and variance will remain constant over time.
+
+Impact of White Noise
+
+The white noise term $ϵt$ adds randomness to the model, making the series unpredictable and variable. While the autoregressive terms provide structure, the random noise plays a major role in shaping the series, especially when the influence of past values is not very strong.
+
+Persistence of Shocks
+
+Because of the combination of positive and negative coefficients, shocks (deviations from the mean) may persist longer than in models with only one or two coefficients, as multiple lags influence the series. However, the persistence of shocks is still limited by the relatively small size of the negative coefficient ($ϕ3=−0.2$).
+
