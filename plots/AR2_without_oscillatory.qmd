@@ -1,0 +1,111 @@
+---
+title: "AR(2) Model with ($\\phi_2 > 0$)"
+format: pdf
+editor: visual
+---
+
+## AR(2) Model without oscillatory behavour. ($\phi_2 > 0$)
+
+
+```{r}
+#| echo: false
+
+library(ggplot2)
+set.seed(123)
+# Function to plot AR(2) process
+plot_ar2_process <- function(ar_coeffs, title_expression) {
+  # Generate AR(2) process
+  ar_process <- as.numeric(arima.sim(model = list(ar = ar_coeffs), n = 200))
+  
+  # Create data frame for plotting
+  plot_data <- data.frame(Time = 1:200, AR_Oscillatory = ar_process)
+  
+  ggplot(plot_data, aes(x = Time, y = AR_Oscillatory)) + 
+    geom_line(color = "purple") + 
+    geom_point(color = "blue", size = 3, shape = 20) + 
+    labs(
+      title = title_expression,
+      x = "Time", 
+      y = "Value"
+    ) +
+    theme_minimal()
+}
+
+# Example 1: AR(2) with coefficients (0.4, 0.1)
+plot_ar2_process(
+  ar_coeffs = c(0.4, 0.1),
+  title_expression = expression("AR(2) without oscillatory behavior: " ~ 
+                                  Y[t] == 0.4 * Y[t-1] + 0.1 * Y[t-2] + e[t])
+)
+
+# Example 2: AR(2) with coefficients (0.7, 0.29)
+plot_ar2_process(
+  ar_coeffs = c(0.7, 0.29),
+  title_expression = expression("AR(2) without oscillatory behavior: " ~ 
+                                  Y[t] == 0.7 * Y[t-1] + 0.29 * Y[t-2] + e[t])
+)
+
+```
+
+The behavior of the two AR(2) processes can be explained by examining their respective coefficients and their effect on the time series dynamics:
+
+---
+
+### **1. AR(2) Process with Coefficients (0.4, 0.1):**
+
+#### Equation:
+$$
+Y_t = 0.4 \cdot Y_{t-1} + 0.1 \cdot Y_{t-2} + e_t 
+$$
+
+#### Key Observations:
+- **Low coefficients (0.4, 0.1):**
+  - These relatively small coefficients result in **weak persistence**, meaning the current value of $Y_t$ depends only moderately on the previous two values.
+  - Changes in $Y_t$ are largely driven by random noise ($e_t$) rather than strong autoregressive patterns.
+
+- **Behavior:**
+  - The process is **stable** with no oscillatory behavior, as both coefficients are positive and their sum ($0.4 + 0.1 = 0.5$) is less than 1.
+  - The values show gradual variations around the mean but return to the mean quickly after small deviations.
+  - This process exhibits **weak memory**, meaning the influence of past values fades quickly.
+
+#### Overall:
+- The time series appears **smooth** with mild fluctuations and no pronounced patterns of oscillation or persistence.
+
+---
+
+### **2. AR(2) Process with Coefficients (0.7, 0.29):**
+
+#### Equation:
+$$
+Y_t = 0.7 \cdot Y_{t-1} + 0.29 \cdot Y_{t-2} + e_t 
+$$
+
+#### Key Observations:
+- **Higher coefficients (0.7, 0.29):**
+  - These larger coefficients result in **stronger persistence**, meaning $Y_t$ is more heavily influenced by the recent past values.
+  - The sum of the coefficients ($0.7 + 0.29 = 0.99$) is close to 1, leading to more pronounced autoregressive effects.
+
+- **Behavior:**
+  - The process is still **stable**, as the coefficients do not exceed the stability threshold.
+  - Values exhibit **longer-lasting effects** from deviations, as changes in $Y_t$ take longer to return to the mean.
+  - No oscillations occur since both coefficients are positive and do not produce alternating signs in $Y_t$.
+
+#### Overall:
+- The time series shows **stronger and slower variations**, with values demonstrating a higher tendency to stay elevated or depressed for several time steps before converging back to the mean.
+
+---
+
+### **Comparison:**
+| Aspect                 | **Process 1 (0.4, 0.1)**                | **Process 2 (0.7, 0.29)**            |
+|------------------------|-----------------------------------------|---------------------------------------|
+| **Persistence**        | Weak                                    | Strong                                |
+| **Stability**          | Stable                                  | Stable                                |
+| **Effect of Past**     | Short-lived memory                     | Long-lasting memory                   |
+| **Oscillatory Behavior** | None                                   | None                                  |
+| **Mean Reversion**     | Faster                                 | Slower                                |
+| **Fluctuations**       | Small and smooth                       | Larger and more persistent            |
+
+### Conclusion:
+- **Process 1** reflects a time series with weak dependencies and rapid convergence to the mean, resembling random noise with minor persistence.
+- **Process 2** represents a process with stronger dependencies, where past values have a noticeable and prolonged influence on future values, although the process remains non-oscillatory and stable.
+
