@@ -1,0 +1,154 @@
+---
+title: "AR(2) Model with ($\\phi_2 < 0$) demonstrating Oscillatory Behaviour"
+format: pdf
+editor: visual
+---
+
+## AR(2) Model With Oscillatory Behavour. ($\phi_2 < 0$)
+
+```{r}
+#| echo: false
+
+library(ggplot2)
+set.seed(123)
+
+
+# Function to plot AR(2) process
+plot_ar2_process <- function(ar_coeffs, title_expression) {
+  # Generate AR(2) process
+  ar_process <- as.numeric(arima.sim(model = list(ar = ar_coeffs), n = 200))
+  
+  # Create data frame for plotting
+  plot_data <- data.frame(Time = 1:200, AR_Oscillatory = ar_process)
+  
+  ggplot(plot_data, aes(x = Time, y = AR_Oscillatory)) + 
+    geom_line(color = "red") + 
+    geom_point(color = "blue", size = 3, shape = 20) + 
+    labs(
+      title = title_expression,
+      x = "Time", 
+      y = "Value"
+    ) +
+    theme_minimal()
+}
+
+# Example 1: AR(2) Model with coefficients (0.5, -0.4)
+plot_ar2_process(
+  ar_coeffs = c(0.5, -0.4),
+  title_expression = expression("AR(2) Model With Oscillations:" ~ 
+                            Y[t] == 0.5 * Y[t-1] - 0.4 * Y[t-2] + e[t])
+)
+
+# Example 2: AR(2) Model with coefficients (0.2, -0.7)
+plot_ar2_process(
+  ar_coeffs = c(0.2, -0.7),
+  title_expression = expression("AR(2) Model With Oscillations: " ~ 
+                            Y[t] == 0.2 * Y[t-1] - 0.7 * Y[t-2] + e[t])
+)
+
+```
+
+The behavior of the two AR(2) processes can be explained by examining their respective coefficients and their effect on the time series dynamics:
+
+------------------------------------------------------------------------
+
+## 1. AR(2) Process with Coefficients (0.5, -0.4):
+
+#### Equation:
+
+$$
+Y_t = 0.5 \cdot Y_{t-1} - 0.4 \cdot Y_{t-2} + e_t 
+$$
+
+### Key Observations:
+
+#### Moderate Oscillatory Behavior:
+
+-   The negative $\phi_2 = -0.4$ introduces oscillations in the time series, with values alternating around the mean.
+-   The oscillations are moderate because $\phi_1 = 0.5$ is not too large, and the influence of past values decays relatively quickly.
+
+#### Stability:
+
+-   The process is **stable** because the coefficients satisfy the stability condition:
+
+$\phi_2 > -1, \quad \phi_1 + \phi_2 < 1, \quad \phi_1 - \phi_2 < 1$
+
+Here: $-0.4>-1 \quad \text 0.5 +(-0.4) = 0.1 < 1 \quad \text{and} \quad 0.5 - (-0.4) = 0.9 < 1$
+
+#### Behavior:
+
+-   The oscillations decay over time, meaning the process eventually reverts to the mean.
+-   The persistence is moderate, with past values influencing the current value for a few time steps before fading.
+
+#### Overall:
+
+-   This process introduces **oscillatory behavior** while remaining stable and moderately persistent.
+-   It is a good choice if you want to observe oscillations without excessive persistence.
+
+------------------------------------------------------------------------
+
+## 2. AR(2) Process with Coefficients (0.2, -0.7)
+
+### Equation:
+
+$Y_t = 0.2 \cdot Y_{t-1} - 0.7 \cdot Y_{t-2} + e_t$
+
+### Stronger Oscillatory Behavior:
+
+-   The larger negative $\phi_2 = -0.7$ results in **stronger oscillations**, with more pronounced alternations around the mean.
+-   The smaller $\phi_1 = 0.2$ means the influence of the most recent past value $(Y_{t-1})$ is weaker, while the second lag $(Y_{t-2})$ dominates the dynamics.
+
+### Stability:
+
+-   The process is also **stable** because the coefficients satisfy the stability condition:
+
+$\phi_2 > -1, \quad \phi_1 + \phi_2 < 1, \quad \phi_1 - \phi_2 < 1$
+
+Here: $-0.7>-1 \quad \text 0.2 +(-0.7) = -0.5 < 1 \quad \text{and} \quad 0.2 - (-0.7) = 0.9 < 1$
+
+### Behavior:
+
+-   The oscillations are more persistent compared to $(0.5, -0.4)$, as the larger magnitude of $\phi_2$ causes the influence of past values to decay more slowly.
+-   The process takes longer to revert to the mean, and the oscillations are more pronounced.
+
+### Overall:
+
+-   This process introduces **stronger and more persistent oscillatory behavior**.
+-   It is a good choice if you want to emphasize oscillations and persistence in the time series.
+
+------------------------------------------------------------------------
+
+## Comparison of (0.5, -0.4) and (0.2, -0.7)
+
+| **Aspect**               | **Process 1 (0.5, -0.4)**                               | **Process 2 (0.2, -0.7)**   |
+|--------------------------|---------------------------------------------------------|-----------------------------|
+| **Oscillatory Behavior** | Moderate                                                | Strong                      |
+| **Persistence**          | Moderate                                                | High                        |
+| **Stability**            | Stable                                                  | Stable                      |
+| **Effect of Past**       | Balanced influence of \$ Y\_{t-1} \$ and \$ Y\_{t-2} \$ | Dominated by \$ Y\_{t-2} \$ |
+| **Mean Reversion**       | Faster                                                  | Slower                      |
+| **Fluctuations**         | Smaller and decaying                                    | Larger and more persistent  |
+
+------------------------------------------------------------------------
+
+## Comparison with Non-Oscillatory Cases
+
+Let’s compare these oscillatory processes to the non-oscillatory cases:
+
+| **Aspect**               | **Non-Oscillatory (0.4, 0.1)** | **Non-Oscillatory (0.7, 0.29)** | **Oscillatory (0.5, -0.4)** | **Oscillatory (0.2, -0.7)** |
+|--------------------------|--------------------------------|---------------------------------|-----------------------------|-----------------------------|
+| **Oscillatory Behavior** | None                           | None                            | Moderate                    | Strong                      |
+| **Persistence**          | Weak                           | Strong                          | Moderate                    | High                        |
+| **Stability**            | Stable                         | Stable                          | Stable                      | Stable                      |
+| **Effect of Past**       | Short-lived memory             | Long-lasting memory             | Moderate memory             | Dominated by \$ Y\_{t-2} \$ |
+| **Mean Reversion**       | Faster                         | Slower                          | Moderate                    | Slow                        |
+| **Fluctuations**         | Small and smooth               | Larger and more persistent      | Alternating and decaying    | Alternating and persistent  |
+
+------------------------------------------------------------------------
+
+### Conclusion:
+
+Both options are better for demonstrating oscillatory behavior. The choice depends on whether you want **moderate** or **strong oscillations**.
+
+-   **Process 1:** If you want moderate oscillations with faster mean reversion use \$ (0.5, -0.4) \$. This process is stable, introduces oscillations, and has moderate persistence.
+-   **Process 2**: If you want stronger oscillations with slower mean reversion use \$ (0.2, -0.7) \$. This process emphasizes oscillatory behavior and persistence, making it more suitable for scenarios where past values have a prolonged influence.
