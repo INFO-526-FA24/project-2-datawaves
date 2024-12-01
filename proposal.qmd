@@ -56,7 +56,7 @@ We will create a line graph and associated Autocorrelation graph for the above m
 
 # Plan for Poster
 
-We will make a tree structure showing how the different visualizations we have explain the different features of AR model. We will include a small real world example to show how the AR model can be used to predict the future. 
+We will make a tree structure showing how the different visualizations we have explain the different features of AR model. We will include a small real world example to show how the AR model can be used to predict the future.
 
 # Weekly Plan of Attack
 
