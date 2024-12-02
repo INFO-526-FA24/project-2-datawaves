@@ -1,0 +1,19 @@
+---
+title: "RealWorldExample"
+author: "Datawaves"
+format: pdf
+editor: visual
+---
+
+# Real World Example
+
+```{r}
+plot(AirPassengers, main = "Airline Passengers Over Time",
+     xlab = "Year-Month", ylab = "Number of Passengers")
+```
+
+```{r}
+decomposed <- decompose(AirPassengers)
+plot(decomposed)
+
+```
