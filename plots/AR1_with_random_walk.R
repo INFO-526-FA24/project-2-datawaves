@@ -3,7 +3,7 @@ set.seed(123)
 
 # Using arima.sim to simulate ARIMA(0,1,0) (Random Walk)
 random_walk_arima <- arima.sim(model = list(order = c(0, 1, 0)), n = 199)
-#n for random walk is 1 less as  
+#for n = 199 the time series data type is being 200 that is  one more than the value of n  
 
 # Using arima.sim to simulate AR(1)
 ar1_process<- arima.sim(model = list(ar = 0.8), n = 200)
