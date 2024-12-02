@@ -13,8 +13,8 @@ function(input, output, session) {
       coeff_values <- switch(input$preset,
                              "ar1_0.5" = "0.5",
                              "ar1_-0.7" = "-0.7",
-                             "ar2_0.7_0.2" = "0.7, 0.2",
-                             "ar2_-0.4_0.3" = "-0.4, 0.3")
+                             "ar2_0.5_-0.4" = "0.5, -0.4",
+                             "ar2_0.2_-0.7" = "0.2, -0.7")
       updateTextInput(session, "coefficients", value = coeff_values)
       updateNumericInput(session, "order", value = length(strsplit(coeff_values, ",")[[1]]))
     }
