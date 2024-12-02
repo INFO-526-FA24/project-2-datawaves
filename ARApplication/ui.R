@@ -12,6 +12,7 @@ fluidPage(
                   "Select Predefined Model:", 
                   choices = list(
                     "Custom" = "custom",
+                    "AR(1): a1 = 1" = "ar1_1",
                     "AR(1): a1 = 0.3" = "ar1_0.3",
                     "AR(1): a1 = -0.3" = "ar1_-0.3",
                     "AR(2): a1 = 0.5, a2 = -0.4" = "ar2_0.5_-0.4",
