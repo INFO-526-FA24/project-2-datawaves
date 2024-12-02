@@ -12,10 +12,11 @@ fluidPage(
                   "Select Predefined Model:", 
                   choices = list(
                     "Custom" = "custom",
-                    "AR(1): a1 = 0.5" = "ar1_0.5",
-                    "AR(1): a1 = -0.7" = "ar1_-0.7",
+                    "AR(1): a1 = 0.3" = "ar1_0.3",
+                    "AR(1): a1 = -0.3" = "ar1_-0.3",
                     "AR(2): a1 = 0.5, a2 = -0.4" = "ar2_0.5_-0.4",
-                    "AR(2): a1 = 0.2, a2 = -0.7" = "ar2_0.2_-0.7"
+                    "AR(2): a1 = 0.2, a2 = -0.7" = "ar2_0.2_-0.7",
+                    "AR(3): a1 = 0.6, a2 = 0.3, a3 = -0.2" = "ar3_0.6_0.3_-0.2"
                   )),
       
       numericInput("order", 
