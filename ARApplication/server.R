@@ -15,6 +15,8 @@ function(input, output, session) {
                              "ar1_-0.3" = "-0.3",
                              "ar2_0.5_-0.4" = "0.5, -0.4",
                              "ar2_0.2_-0.7" = "0.2, -0.7",
+                             "ar2_0.4_0.1" = "0.4, 0.1",
+                             "ar2_0.7_0.29" = "0.2, 0.7",
                              "ar3_0.6_0.3_-0.2" = "0.6, 0.3, -0.2")
       updateTextInput(session, "coefficients", value = coeff_values)
       updateNumericInput(session, "order", value = length(strsplit(coeff_values, ",")[[1]]))
