@@ -1,0 +1,66 @@
+---
+title: "AR1_Random_Walk"
+format: html
+editor: visual
+---
+
+### What is a Random Walk?
+
+A *random walk* is a time series process where each value is the sum of the previous value and a random noise term. It can be described mathematically as:
+
+$X_{t} = X_{t-1} + \epsilon_t$
+
+Here: - ( $X_t$ ): The value at time ( t ), - ( $X_{t-1}$ ): The value at time ( t-1 ), - ( $\epsilon_t$ ): A random noise term, typically assumed to follow a normal distribution with mean 0 and variance ( $\sigma^2$ ).
+
+Key characteristics of a random walk: 
+
+1. *Non-Stationarity*: A random walk is not stationary because its mean and variance change over time. The variance grows with time, making it unpredictable in the long run. 
+
+2. *Memory*: Each step depends directly on the previous value, so the process exhibits strong persistence over time.
+
+------------------------------------------------------------------------
+
+### AR(1) Model
+
+The *AR(1)* model is defined as:
+
+$X_t = \phi*1*X_{t-1} + \epsilon_t$
+
+Here: - ( $\phi*1$ ): Autoregressive coefficient, which determines the influence of ( $X*{t-1}$ ) on ( $X_t$ ). - ( $\epsilon_t$): White noise.
+
+The AR(1) process is stationary if ( $|\phi_1| < 1$ ). For ( $|\phi_1| \geq 1$ ), the process becomes non-stationary.
+
+------------------------------------------------------------------------
+
+### How ( $\phi_1 = 1$ ) Makes AR(1) a Random Walk
+
+When ( $\phi_1 = 1$ ), the AR(1) model becomes:
+
+\$X_t = X\_{t-1} + \epsilon\_t \$
+
+This is exactly the definition of a random walk. In this case: - Each value ( $X_t$ ) is the previous value ( $X_{t-1}$ ) plus a random noise term. - The time series lacks a tendency to revert to a mean, as there is no dampening factor to bring values back to a central level.
+
+------------------------------------------------------------------------
+
+### Key Implications of ( $\phi_1 = 1$ ):
+
+1.  *Non-Stationarity*:
+    -   For ( $|\phi_1| < 1$ ), the AR(1) process is stationary and has constant variance.
+    -   For ( $\phi_1 = 1$ ), the variance of ( $X_t$ ) grows linearly with time: $\text{Var}(X_t) = t \cdot \sigma^2 $ This makes the process non-stationary.
+2.  *Unbounded Growth*:
+    -   As time progresses, the values of ( $X_t$ ) can drift arbitrarily far from their starting point due to the cumulative effect of ( $\epsilon_t$ ).
+3.  *Lack of Mean Reversion*:
+    -   In a stationary AR(1) process (( $|\phi_1| < 1$ )), the series tends to revert to its mean. For ( $\phi_1 = 1$ ), there is no mean reversion, as the process has no equilibrium level.
+
+------------------------------------------------------------------------
+
+### Visualization of Random Walk vs Stationary AR(1):
+
+1.  *Random Walk* ( $\phi_1 = 1$ ):
+    -   The series drifts up or down without a predictable pattern.
+    -   Variance increases over time, and the path depends heavily on the noise term.
+2.  *Stationary AR(1)* ( $|\phi_1| < 1$ ):
+    -   The series oscillates around a fixed mean with a constant variance.
+    -   Noise contributes to deviations, but the process is "pulled back" to the mean by the coefficient ( $\phi_1$ ).
+
+Understanding this relationship is crucial for time series modeling, as it helps determine whether a process needs differencing or detrending to achieve stationarity before analysis or forecasting.
