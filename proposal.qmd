@@ -90,8 +90,8 @@ data <- data.frame(
     "Project Presentation/Poster for iShowcase"
   ),
   Status = c(
-    "Completed", "Completed", "TODO", "TODO", "TODO", "TODO", "TODO", "TODO", "TODO",
-    "TODO", "TODO", "TODO", "TODO", "TODO", "TODO"
+    "Completed", "Completed", "Completed", "Completed", "Completed", "Completed", "Completed", "Completed", "Completed",
+    "Completed", "Completed", "Completed", "Completed", "Completed", "Completed"
   ),
   Assignee = c(
     "Libin, Saharsh, Ajeet, Navyasree", "Libin, Saharsh, Ajeet, Navyasree",
