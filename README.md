@@ -28,3 +28,4 @@ We will generate synthetic data for these AR models and create visualizations fr
 
 ## *Note: 
 - The PDF version of the Proposal(proposal.pdf) is available in the docs folder.
+- The Project Write-up file (project_write_up.pdf) and iShowCase Poster (Datawaves_iShowCase_Final_Poster.pdf) are also present in /docs folder.
