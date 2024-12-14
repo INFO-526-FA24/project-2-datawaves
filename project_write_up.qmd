@@ -33,6 +33,7 @@ where:
 -   $\phi_1, \phi_2, \dots, \phi_p$ are the auto regressive coefficients,
 -   $p$ is the order of the AR model, and
 -   $\epsilon_t$ is a white noise error term at time $t$, with mean zero and constant variance.
+
 ## Partial Autocorrelation Function (PACF)
 
 The Partial Autocorrelation Function (PACF) is a statistical tool used in time series analysis to measure the direct relationship between a variable and its lagged values, after removing the influence of intermediate lags.
@@ -48,8 +49,9 @@ To understand the behavior of AR (AutoRegressive) models under different configu
 5.  AR(2) - Data without oscillatory behavior
 6.  AR(3) - Data with Complex behavior
 
-
 We created a line graph and associated Autocorrelation graph for the above models to visualize the statistical information and how the data behaves. We have included a shiny app that enables the user to change parameters and plot the line graph.
+
+![Behavioral study of Autoregressive models](images/IMG-20241213-WA0012.jpg)
 
 # AR(1) model
 
